@@ -1,0 +1,535 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    /* background-image: url(https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/PedroPinhata/phptqEYTs.png); */
+    overflow: hidden;
+    background-color: #7ea650;
+    background-size: cover;
+    background-position: 0% 100%;
+}
+
+body {
+    /* font-size: 100%; */
+    height: 100%;
+    font-family: monospace, monospace;
+}
+
+main {
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+#players-name {
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* width: 60%; */
+    height: 100px;
+    margin-bottom: -15px;
+}
+
+#players-name h1 {
+    font-size: 3vw;
+}
+
+.player {
+    margin: 1em 0 5px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.player__tile {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    margin: 0 auto;
+    color: #000000;
+    max-width: 400px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    box-shadow: inset 3px 3px 0 #000,
+        inset -3px 3px 0 black,
+        inset -3px -3px 0 black,
+        inset 3px -3px 0 black;
+    /* border: 3px solid #000; */
+}
+
+.player-2 {
+    color: #FFFFFF;
+    margin-top: 5px;
+    background-color: #2D2C2C;
+}
+
+.player__digits {
+    font-size: 6rem;
+    font-weight: bold;
+}
+
+.timer__buttons {
+    margin-bottom: 1em;
+}
+
+.timer__start-bttn,
+.timer__reset-bttn {
+    width: 100%;
+    display: block;
+    color: #020202;
+    min-height: 50px;
+    max-width: 400px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 8px;
+    letter-spacing: 2px;
+    margin: 0 auto 5px auto;
+    border: 4px solid #000000;
+}
+
+.timer__start-bttn {
+    color: #FFFFFF;
+    background-color: #232323;
+}
+
+.timer__start-bttn:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+.timer__reset-bttn:hover {
+    color: #FFFFFF;
+    background-color: #232323;
+}
+
+footer p {
+    text-align: center;
+}
+
+/* Media queries for mobile first develoment. */
+/* Media queries for landscape mode on mobile devices */
+@media only screen and (orientation: landscape) and (max-width: 850px) {
+    .player {
+        max-width: 610px;
+        flex-direction: row;
+        margin: 5px auto 0 auto;
+    }
+
+    .player__tile {
+        max-width: 300px;
+        max-height: 250px;
+        margin: 0 3px 5px 3px;
+    }
+
+    .player__digits {
+        font-size: 5rem;
+    }
+
+    .timer__buttons {
+        display: flex;
+        margin: 0 auto;
+        max-width: 610px;
+    }
+
+    .timer__start-bttn,
+    .timer__reset-bttn {
+        display: block;
+        max-width: 300px;
+        margin: 0 3px 5px 3px;
+    }
+}
+
+/* Media queries for portrait mode */
+@media only screen and (orientation: portrait) and (min-width: 400px) {
+    body {
+        overflow: auto;
+    }
+
+    .player__tile {
+        height: 350px;
+    }
+
+    .player__digits {
+        font-size: 6rem;
+    }
+}
+
+/* Screen wider than 850px wide will use these settings. */
+@media only screen and (min-width: 850px) {
+    .player {
+        margin: 1em auto 10px auto;
+        max-width: 810px;
+        flex-direction: row;
+    }
+
+    .player__tile {
+        height: 350px;
+    }
+
+    .player__tile {
+        height: 350px;
+    }
+
+    .player-2 {
+        margin-top: 0;
+    }
+
+    .player__digits {
+        font-size: 7rem;
+    }
+
+    .timer__buttons {
+        display: flex;
+        margin: 0 auto;
+        max-width: 810px;
+    }
+
+    .timer__start-bttn,
+    .timer__reset-bttn {
+        padding: .7em;
+        font-size: 1.8rem;
+    }
+}
+
+#start-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #333;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: top 0.8s ease;
+}
+
+#center {
+    height: 90%;
+    width: 70%;
+    background-color: #202020;
+    color: #fff;
+    position: relative;
+    border-radius: 5px;
+}
+
+#start-menu h1 {
+    font-size: 3.5vw;
+    font-family: pacifico;
+    font-weight: 500;
+    margin-top: 5px;
+    text-align: center;
+}
+
+#entry1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 35px;
+    margin-top: 10px;
+}
+
+#entry2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 35px;
+}
+
+#entry3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 35px;
+}
+
+#entry1 h4 {
+    font-size: gilroy;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #aaa;
+    font-size: 1.8vw;
+    font-weight: 500;
+}
+
+#entry2 h4 {
+    font-size: gilroy;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #aaa;
+    font-size: 1.8vw;
+    font-weight: 500;
+}
+
+#entry3 h4 {
+    font-size: gilroy;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #aaa;
+    font-size: 1.8vw;
+    font-weight: 500;
+}
+
+#entry1 input {
+    border: none;
+    border-bottom: 1px solid #aaa;
+    padding: 5px 5px;
+    font-size: 1.6vw;
+    font-weight: 500;
+    background-color: transparent;
+    width: 16vw;
+    color: #aaa;
+}
+
+#entry2 input {
+    border: none;
+    border-bottom: 1px solid #aaa;
+    padding: 5px 5px;
+    font-size: 1.6vw;
+    font-weight: 500;
+    background-color: transparent;
+    width: 16vw;
+    color: #aaa;
+}
+
+#entry3 input {
+    border: none;
+    border-bottom: 1px solid #aaa;
+    padding: 5px 5px;
+    font-size: 1.6vw;
+    font-weight: 500;
+    background-color: transparent;
+    color: #aaa;
+    width: 16vw;
+}
+
+
+#player1-id:focus {
+    outline: none;
+}
+
+#player2-id:focus {
+    outline: none;
+}
+
+/* #time-limit-id{
+    width: 10vw;
+    padding: 1.3vw 2vw;
+    border: none;
+    border-radius: 5px;
+    font-size: 2vw;
+}
+#time-limit-id::placeholder{
+    font-weight: 600;
+    color: #aaa;
+} */
+#time-limit-id:focus {
+    outline: none;
+}
+
+#start-btn {
+    position: absolute;
+    bottom: 2%;
+    border: none;
+    width: 97%;
+    padding: 10px 0;
+    font-size: 1.6vw;
+    color: #fff;
+    background-color: #51c06f;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#start-btn:active {
+    transform: translate(-50%, 0) scale(0.95);
+}
+
+@media (max-width:600px) {
+
+    #players-name {
+        /* background-color: red; */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 20px;
+        /* background-color: red; */
+        position: absolute;
+        height: 49%;
+        flex-direction: column;
+        margin-bottom: -10px;
+    }
+
+    #players-name h1 {
+        font-size: 7vw;
+    }
+    #players-name h1:nth-child(2) {
+        font-size: 7vw;
+        color: #fff;
+    }
+
+    #start-menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: #333;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        transition: top 0.8s ease;
+    }
+
+    #center {
+        height: 50%;
+        width: 90%;
+        background-color: #202020;
+        color: #fff;
+        position: relative;
+        border-radius: 5px;
+    }
+
+    #start-menu h1 {
+        font-size: 7.5vw;
+        font-family: pacifico;
+        font-weight: 500;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    #entry1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 20px;
+        margin-top: 10px;
+    }
+
+    #entry2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 20px;
+    }
+
+    #entry3 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 20px;
+    }
+
+    #entry1 h4 {
+        font-size: gilroy;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #aaa;
+        font-size: 3.8vw;
+        font-weight: 500;
+    }
+
+    #entry2 h4 {
+        font-size: gilroy;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #aaa;
+        font-size: 3.8vw;
+        font-weight: 500;
+    }
+
+    #entry3 h4 {
+        font-size: gilroy;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #aaa;
+        font-size: 3.8vw;
+        font-weight: 500;
+    }
+
+    #entry1 input {
+        border: none;
+        border-bottom: 1px solid #aaa;
+        padding: 3px 5px;
+        font-size: 3.3vw;
+        font-weight: 500;
+        background-color: transparent;
+        width: 26vw;
+        color: #aaa;
+    }
+
+    #entry2 input {
+        border: none;
+        border-bottom: 1px solid #aaa;
+        padding: 3px 5px;
+        font-size: 3.3vw;
+        font-weight: 500;
+        background-color: transparent;
+        width: 26vw;
+        color: #aaa;
+    }
+
+    #entry3 input {
+        border: none;
+        border-bottom: 1px solid #aaa;
+        padding: 3px 5px;
+        font-size: 3.3vw;
+        font-weight: 500;
+        background-color: transparent;
+        color: #aaa;
+        width: 26vw;
+    }
+
+
+    #player1-id:focus {
+        outline: none;
+    }
+
+    #player2-id:focus {
+        outline: none;
+    }
+
+    /* #time-limit-id{
+    width: 10vw;
+    padding: 1.3vw 2vw;
+    border: none;
+    border-radius: 5px;
+    font-size: 2vw;
+}
+#time-limit-id::placeholder{
+    font-weight: 600;
+    color: #aaa;
+} */
+    #time-limit-id:focus {
+        outline: none;
+    }
+
+    #start-btn {
+        position: absolute;
+        bottom: 2%;
+        border: none;
+        width: 95%;
+        padding: 10px 0;
+        font-size: 3.9vw;
+        color: #fff;
+        background-color: #51c06f;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: transform 0.4s ease;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    #start-btn:active {
+        transform: translate(-50%, 0) scale(0.95);
+    }
+}

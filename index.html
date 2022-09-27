@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="start-menu">
+    <div id="center">
+      <h1>Shery Chess Clock</h1>
+      <div id="entry1">
+        <h4>Enter Player 1 name - </h4>
+        <input value="Player1" type="text" id="player1-id" name="player1-name" placeholder="Enter Player 1 name">
+      </div>
+      <div id="entry2">
+        <h4>Enter Player 2 name - </h4>
+        <input value="Player2" type="text" id="player2-id" name="player2-name" placeholder="Enter Player 2 name">
+      </div>
+      <div id="entry3">
+        <h4>Enter Time -</h4> 
+        <input value="10" max="60" min="5" type="number" name="time-limit" id="time-limit-id" placeholder="Time">
+      </div>
+      <button id="start-btn">Let's Go!</button>
+    </div>
+  </div>
+  <main>
+    <div id="players-name">
+      <h1 id="player1-name">Sarthak</h1>
+      <h1 id="player2-name">Harsh</h1>
+    </div>
+    <div class="player">
+      <div class="player__tile player-1">
+        <div class="player__digits">
+          <span id="min1">10</span>:<span id="sec1">00</span>
+        </div>
+      </div>
+
+      <div class="player__tile player-2">
+        <div class="player__digits">
+          <span id="min2">10</span>:<span id="sec2">00</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="timer__buttons">
+      <button class="timer__start-bttn bttn" type="button">START</button>
+      <button class="timer__reset-bttn bttn" type="button">RESET</button>
+    </div>
+
+  </main>
+
+  <footer>
+
+    <p>Press spacebar or click on timer after a move to switch player's clock.</p>
+
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
